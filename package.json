@@ -1,0 +1,16 @@
+{
+  "name": "proyecto",
+  "version": "0.0.1",
+  "description": "proyecto daw",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "PGilP",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "nodemon": "^1.12.1"
+  }
+}
