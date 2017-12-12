@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es" >
+<head>
+    <% include ../partials/head %>
+    <script src="/js/login.js" language="javascript" type="text/javascript"></script>
+    <link href="/css/login.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <% include ../partials/header %>
+    <div class="container">
+       <div class="jumbotron" id="loginForm">
+           <form class="form-signin" action="/login" method="post">
+                <h2 class="form-signin-heading">Iniciar sesión</h2>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus name="username">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="pass">
+                <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+          </form>
+          <br>
+          <div class="text-right">
+            <p>¿Eres nuevo?</p>
+            <a class="btn btn-info" href="/signup">Regístrate</a> 
+          </div>
+       </div>
+
+    </div>
+</body>
+</html>

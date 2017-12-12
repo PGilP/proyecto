@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>
+    <div class="container">
+      <div class="jumbotron">
+        <form class="form-register" action="/signup" method="post">
+            <h2 class="form-signin-heading">Registrarse</h2>
+            <label for="inputUser">Usuario:</label>
+            <input type="text" id="inputUser" class="form-control" placeholder="Usuario" required autofocus name="username">
+            
+            <label for="inputPassword">Contraseña:</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="pass">
+            
+            <label for="inputEmail">Correo:</label>
+            <input type="text" id="inputEmail" class="form-control" placeholder="Contraseña" required name="email">
+            
+            <label for="inputName">Nombre:</label>
+            <input type="text" id="inputName" class="form-control" placeholder="Contraseña" required name="name">
+            
+            <label for="inputDate">Fecha de nacimiento:</label>
+            <input type="date" id="inputDate" class="form-control" placeholder="Contraseña" required name="date">
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
+        </form>   
+      </div>
+       
+    </div>
+</body>
+</html>

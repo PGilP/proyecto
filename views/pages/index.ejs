@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>   
+    <div class="container">
+       <div class="jumbotron">
+        <% if(!data.user){ %>
+        <% }else{ %>
+            <p>Hola <%= data.name %></p>
+            <a href="/logout">Cerrar sesión</a>
+        <% } %>
+       </div>
+    </div>
+</body>
+</html>
