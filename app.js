@@ -40,36 +40,38 @@ app.get('/', function (req, res) {
 });
 
 app.get('/login', function (req, res) {
-    if(req.session.user){
-       res.redirect('/sesion');
-    }else res.render('pages/login', {
-        data : req.session
-    });
+    if(req.session.user) res.redirect('/');
+    else res.render('pages/login', {data : req.session});
 });
 
 app.get('/signup', function(req, res){
-    res.render('pages/signUp',{
-        data : req.session
-    });
+    if(req.session.user) res.redirect('/');
+    else res.render('pages/signUp', {data : req.session});
 });
 
-app.get('/sesion', checkSignIn, function(req, res){
-    console.log(req.session);
-    if(req.session.user){
-        res.redirect('/');
-    }else{
-        res.redirect('/login');
-    }
-});
-app.get('/usersettings',function(req, res){
-    res.render('pages/userSettings',{
-        data : req.session
-    });
+app.get('/usersettings', checkSignIn, function(req, res){
+    if(req.session.user) res.render('pages/userSettings', {data : req.session});
+    else res.redirect('/login');
 });
 
 app.get('/logout', function(req, res){
     req.session.destroy();
     res.redirect('/login');
+});
+
+app.get('/contact', checkSignIn, function(req, res){
+    if(req.session.user) res.render('pages/contact',{data : req.session});
+    else res.redirect('/login');
+});
+
+app.get('/buyflights', checkSignIn, function(req, res){
+    if(req.session.user) res.render('pages/buyFlights',{data : req.session});
+    else res.redirect('/login');
+});
+
+app.get('/changeflights', checkSignIn, function(req, res){
+    if(req.session.user) res.render('pages/changeFlights',{data : req.session});
+    else res.redirect('/login');
 });
 
 
@@ -103,7 +105,7 @@ app.post('/login', function (req, res) {
 
 app.post('/signup', function(req, res){
     var newUser = {
-        id         : null,
+        id_usuario : null,
         usuario    : req.body.username,
         contrasena : req.body.pass,
         correo     : req.body.email,
@@ -137,6 +139,10 @@ app.post('/signup', function(req, res){
             res.send('Nombre de usuario ya existente');  
         } 
     });
+});
+
+app.post('/userSettings',function(req,res){
+    
 });
 
 app.use(function(req, res, next){

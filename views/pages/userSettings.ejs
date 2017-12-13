@@ -1,8 +1,68 @@
 <!DOCTYPE html>
 <html>
    <head>
-       <% include ../partials/head %>   
+       <% include ../partials/head %>
+       <script src="js/userSettings.js"></script>
    </head>
    <body>
-       <% include ../partials/header %>
+    <% include ../partials/header %>
+    <div class="container">
+      <div class="jumbotron">
+        <form name="formUpdate" class="form-update" action="/userSettings" method="post">
+            <h2 class="form-signin-heading">Cambiar datos</h2>
+            
+            <label for="actualUser">Usuario actual:</label>
+            <input type="text" id="actualUser" disabled class="form-control" value="<%= data.user %>">
+            <label for="newUser">Usuario nuevo:</label>
+            <input type="text" id="newUser" class="form-control" placeholder="Usuario" name="username">
+            <br>
+            <label for="newPassword">Contraseña nueva:</label>
+            <input type="password" id="newPassword" class="form-control" placeholder="Contraseña" name="pass">
+            <label for="reNewPassword">Repite la contraseña nueva:</label>
+            <input type="password" id="reNewPassword" class="form-control" placeholder="Contraseña" name="pass">
+            <br>
+            <label for="actualEmail">Correo:</label>
+            <input type="text" id="actualEmail" class="form-control" value="<%= data.email%>" disabled name="actualEmail">
+            <label for="newEmail">Nuevo correo:</label>
+            <input type="text" id="newEmail" class="form-control" placeholder="Nuevo correo" name="newEmail">
+            <br>
+            <label for="actualName">Nombre actual:</label>
+            <input type="text" id="actualName" class="form-control" value="<%= data.name %>" name="actualName" disabled>
+            <label for="newName">Nuevo nombre:</label>
+            <input type="text" id="newName" class="form-control" placeholder="Nuevo nombre" name="newName">
+            <br>
+            <label for="actualDate">Fecha de nacimiento actual:</label>
+            <input type="text" id="actualDate" class="form-control" disabled value="<%= data.date.slice(0,10) %>" name="date">
+            <label for="newDate">Fecha de nacimiento nueva:</label>
+            <input type="date" id="actualDate" class="form-control" name="newDate">
+            <br>
+            <!--MODAL-->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Guardar datos</h4>
+                  </div>
+                  <div class="modal-body">
+                    <label for="actualPassword">Introduce tu contraseña para guardar los datos:</label>
+                    <input type="password" name="actualPassword" id="actualPassword" class="form-control" placeholder="Contraseña" name="pass" value="">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <% //if (document.formUpdate.actualPassword.value == data.pass){ %>
+                    <button onclick="javascript:getPassValue()" type="button" class="btn btn-primary">Save changes</button>
+                    <% //} else { %>
+                    <button disabled type="button" class="btn btn-primary">Save changes</button>
+                    <% //} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--FIN DEL MODAL-->
+          <button onclick="" type="button" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#myModal">Actualizar</button>
+        </form> 
+      </div>
+    </div>
    </body>
+</html>
