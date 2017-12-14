@@ -8,6 +8,40 @@
     <div class="container">
        <div class="jumbotron">
         <% if(!data.user){ %>
+            <h1 class="text-center">Balear Airlines</h1>
+            <h3>Mapa Islas Baleares</h3>
+            <img src="images/islas_baleares.png">
+            <h3>Nuestra flota</h3>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <div class="thumbnail center-block">
+                    <img src="images/avion1.jpg" alt="...">
+                    <div class="caption">
+                      <h3>Airbus A320neo</h3>
+                      <p><a class="btn btn-primary" role="button" data-toggle="modal" data-target="#airbusA320neo">Información</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="thumbnail center-block">
+                    <img src="images/avion2.jpg" alt="...">
+                    <div class="caption">
+                      <h3>Boeing 747</h3>
+                      <p><a href="#" class="btn btn-primary" role="button"  data-toggle="modal" data-target="#boeing747">Información</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="thumbnail center-block">
+                    <img src="images/avion3.jpg" alt="...">
+                    <div class="caption">
+                      <h3>Thumbnail label</h3>
+                      <p><a href="#" class="btn btn-primary" role="button">Información</a></p>
+                    </div>
+                  </div>
+                </div>
+           </div>
+           <% include ../partials/modals %>
         <% }else{ %>
             <p>Hola <%= data.name %></p>
             <a href="/logout">Cerrar sesión</a>

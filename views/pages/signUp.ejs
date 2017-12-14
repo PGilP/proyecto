@@ -15,8 +15,8 @@
             <span style="color:red">*Nombre ya utilizado</span>
             <br>                     
             <%}%>
-            <label for="inputPassword">Contraseña:</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="pass">
+            <label for="inputPassword">Contraseña(mín. 8 caracteres, una mayúscula, una minúscula y un caracter especial o número):</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="pass" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
             
             <label for="inputEmail">Correo:</label>
             <input type="text" id="inputEmail" class="form-control" placeholder="Correo" required name="email">
@@ -24,8 +24,9 @@
             <label for="inputName">Nombre:</label>
             <input type="text" id="inputName" class="form-control" placeholder="Nombre" required name="name">
             
+            
             <label for="inputDate">Fecha de nacimiento:</label>
-            <input type="date" id="inputDate" class="form-control" required name="date">
+            <input min="1917-01-01" type="date" id="inputDate" class="form-control" required name="date">
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
         </form>   

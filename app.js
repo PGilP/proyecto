@@ -69,14 +69,20 @@ app.get('/contact', checkSignIn, function(req, res){
 });
 
 app.get('/buyflights', checkSignIn, function(req, res){
+    console.log(req.session);
     req.session.errorFlight = false;
     if(req.session.user){
         var getFlights = 'SELECT * FROM vuelo';
         database.connection.query(getFlights,function(err, rows, fields){
-        if (err) throw err;
-        var flights = rows;
-        req.session.flights = flights;
-        res.render('pages/buyFlights',{data : req.session});
+            if (err) throw err;
+            var flights = rows;
+            req.session.flights = flights;
+            /*if(req.session.reserveOk){
+                req.session.reserveOk = false;
+            }*/
+            res.render('pages/buyFlights',{data : req.session});
+            
+
         });
     }else res.redirect('/login');    
 });
@@ -194,23 +200,25 @@ app.post('/buyFlights',function(req, res){
                         console.log('Suma--->'+seatsReserved);
                         console.log(typeof seatsReserved);
                         database.connection.query(updateSeatsBuy,function(err,rows,fields){
-                        if (err) throw err;
-                            database.connection.query(updateSeats,function(err, rows, fields){
-                                if (err) throw err;
-                            });
-                        setTimeout(function(){
-                            res.redirect('/buyflights');
-                        },3000);
+                            if (err) throw err;
+                                database.connection.query(updateSeats,function(err, rows, fields){
+                                    if (err) throw err;
+                                });
+                            req.session.reserveOk = true;
+                            setTimeout(function(){
+                                res.redirect('/buyflights');
+                            },3000);
                         });
                     }else{
                         database.connection.query(insertSeatsBuy,function(err,rows,fields){
-                        if (err) throw err;
-                            database.connection.query(updateSeats,function(err, rows, fields){
-                                if (err) throw err;
-                            });
-                        setTimeout(function(){
-                            res.redirect('/buyflights');
-                        },3000);
+                            if (err) throw err;
+                                database.connection.query(updateSeats,function(err, rows, fields){
+                                    if (err) throw err;
+                                });
+                            req.session.reserveOk = true;
+                            setTimeout(function(){
+                                res.redirect('/buyflights');
+                            },3000);
                         });
                     }
                 });
