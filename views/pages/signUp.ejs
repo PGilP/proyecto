@@ -11,7 +11,10 @@
             <h2 class="form-signin-heading">Registrarse</h2>
             <label for="inputUser">Usuario:</label>
             <input type="text" id="inputUser" class="form-control" placeholder="Usuario" required autofocus name="username">
-            
+            <%if(data.errorUsername){%>
+            <span style="color:red">*Nombre ya utilizado</span>
+            <br>                     
+            <%}%>
             <label for="inputPassword">Contraseña:</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="pass">
             
